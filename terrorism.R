@@ -1,0 +1,16 @@
+getwd()
+setwd("C:\\Users\\dolid\\OneDrive\\Desktop\\terrorism")
+glbalterr <- read.csv("globalterrorismdb.csv",na.strings =c(""))
+head(glbalterr)
+nrow(glbalterr)
+library(tidyverse)
+summary(glbalterr)
+glimpse(glbalterr)
+globalterrorism_geography <- subset(glbalterr,select=c(eventid,iyear,imonth,iday,country,country_txt,region,region_txt,provstate,city,latitude,longitude,location))
+globalterrorism_geography
+globalterrorism_damage <- subset(glbalterr,select=c(eventid,nkill,nkillus,nkillter,nwound,nwoundus,nwoundte,property,propextent,propextent_txt,propvalue,propcomment,ishostkid,nhostkid,nhostkidus,nhours,ndays,divert,kidhijcountry,ransom,ransomamt,ransomamtus,ransompaid,ransompaidus,ransomnote,hostkidoutcome,hostkidoutcome_txt,nreleased))
+globalterrorism_damage
+globalterrorism_attack <- subset(glbalterr,select = c(success,suicide,attacktype1,attacktype1_txt,targtype1,targtype1_txt,targsubtype1,targsubtype1_txt,corp1,target1,natlty1,natlty1_txt,gname,gsubname,motive,claimed,claimmode,claimmode_txt,weaptype1,weaptype1_txt,weapsubtype1,weapsubtype1_txt,weapdetail))
+write.csv(globalterrorism_geography,"C:\\Users\\dolid\\OneDrive\\Desktop\\terrorism\\terrsepdata\\globalterrorism_geography.csv",row.names = TRUE)
+write.csv(globalterrorism_damage,"C:\\Users\\dolid\\OneDrive\\Desktop\\terrorism\\terrsepdata\\globalterrorism_damage.csv",row.names = TRUE)
+write.csv(globalterrorism_attack,"C:\\Users\\dolid\\OneDrive\\Desktop\\terrorism\\terrsepdata\\globalterrorism_attack.csv",row.names = TRUE)
